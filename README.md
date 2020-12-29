@@ -1,4 +1,5 @@
 # IoT-Dashboard-Flask
+### This Dashboard is one of its kind, it can't be found in the market or any other websites
 A Simple IoT Dashboard using Flask and SQLite3
 
 ## Features
@@ -12,6 +13,7 @@ A Simple IoT Dashboard using Flask and SQLite3
 8. Database (SQLite 3)
 9. GPS Tracking using API and Mapbox
 10. Text to Speech usin gTTs and playsound
+11. Firebase and GoogleSheets can be added if required
 
 
 ### Features To-come
