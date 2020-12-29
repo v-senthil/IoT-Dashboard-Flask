@@ -2,15 +2,16 @@
 A Simple IoT Dashboard using Flask and SQLite3
 
 ## Features
-1. Sensor Data
-2. Automatic Email
+1. Sensor Data --> Temperature and Humidity (other sensors can be added if required)
+2. Automatic Email using Flask_Mail
 3. Messaging using Twilio
 4. Notifications
 5. Adafruit IO extensions
 6. Charts and Tables
 7. Report Download
-8. Database
-9. GPS Tracking
+8. Database (SQLite 3)
+9. GPS Tracking using API and Mapbox
+10. Text to Speech usin gTTs and playsound
 
 
 ### Features To-come
