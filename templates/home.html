@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--
+	Introspect by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+  <head>
+    <title>A R M S </title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/raspi.png') }}" />
+    <style>
+    /* Hide Scroll Bar*/
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    /* Diabel text Selection */
+    div {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10+ and Edge */
+      user-select: none; /* Standard syntax */
+    }
+    </style>
+    <script>
+    // Diabale Right Click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+  </head>
+  <body>
+
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="ARMS"
+  agent-id="7e125952-eec5-4b65-a2da-05405af42fb1"
+  language-code="en"
+></df-messenger>
+    <!-- Header -->
+    <header id="header">
+      <div class="inner">
+        <a href="index.html" class="logo">A R M S </a>
+        <nav id="nav">
+          <a href="/">Home</a>
+          <a href="/login">Login</a>
+        </nav>
+      </div>
+    </header>
+    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+    <!-- Banner style="background:url(static/image/star-sky.jpg);-->
+    <section id="banner" >
+      <div class="inner">
+        <h1>
+          Autonomous Remote Monitoring System
+        </h1>
+        <ul class="actions">
+          <li><a href="/login" class="button alt">Dashboard</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- One -->
+    <section id="one">
+      <div class="inner">
+        <header>
+          <h2>About Project</h2>
+        </header>
+        <p>
+          Robots are used for special applications like handling hazardous situations and tasks that need high accuracy and speed. To implement real time inspection and surveillance of the border and home security, intelligent remote monitoring system is developed. Autonomous Remote Monitoring System is designed using Raspberry Pi, Sensor Network, Database which gives the user an imminence experience in using our robot Car, which can be used in emergence situation.
+        </p> <br>
+        <p>
+          Made using the best available opensource application and platform available. All cloud based which maked users easy to access data and the device from anywhere in the world in real time, fast, easy and quick. Taking advantage of GCP - Google's Firebase, Storage System and SQLite3 Database is used.
+        <ul class="actions">
+          <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- Two -->
+    <section id="two">
+      <div class="inner">
+        <article>
+          <div class="content">
+            <header>
+              <h3>Dashboard</h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/dashboard.png" alt="" />
+            </div>
+            <p>
+              Responsive Dashboard which can not be obtained in any online IoT
+              Framework. Simple, Elegent, and Precise.
+            </p>
+          </div>
+        </article>
+        <article class="alt">
+          <div class="content">
+            <header>
+              <h3>Charts and Data</h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/charts.jpeg" alt="" />
+            </div>
+            <p>
+              For easy understanding of data and the values Charts are used with
+              respect to the sepecific time.
+            </p>
+          </div>
+        </article>
+        <article class="alt">
+          <div class="content">
+            <header>
+              <h3>Tracking</h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/tracking.jpeg" alt="" />
+            </div>
+            <p>
+              GPS Tracking of the robot car is esstential and is also done line
+              without any delay.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="two">
+      <div class="inner">
+        <article>
+          <div class="content">
+            <header>
+              <h3> Cloud File Storage </h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/storage.png" alt="" />
+            </div>
+            <p>
+              Upload your files for future analysis and Visualisation securely in the cloud. Which can be accessed only by the admin
+            </p>
+            <ul class="actions">
+              <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+            </ul>
+          </div>
+        </article>
+        <article>
+          <div class="content">
+            <header>
+              <h3>Cloud Data Storage</h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/firebase.png" alt="" />
+            </div>
+            <p>
+              Google Sheet and Firebase Integraion gives limtless access to the
+              data like Android Application, Cloud Services, etc.
+            </p>
+            <ul class="actions">
+              <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+            </ul>
+          </div>
+        </article>
+        <article>
+          <div class="content">
+            <header>
+              <h3>Data Visualisation and Analysis</h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/visualization.jpeg" alt="" />
+            </div>
+            <p>
+              External Visualization tools like Tableau and Power Bi are used to
+              visualize and analyse data.
+            </p>
+            <ul class="actions">
+              <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="two">
+      <div class="inner">
+        <article>
+          <div class="content">
+            <header>
+              <h3>Live-Stream</h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/live.jpeg" alt="" />
+            </div>
+            <p>
+              As Tracking is enabled, Live stream using Raspberry Pi Cam is
+              useful which is embedded in the system it self.
+            </p>
+            <ul class="actions">
+              <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+            </ul>
+          </div>
+        </article>
+        <article>
+          <div class="content">
+            <header>
+              <h3>Reports</h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/reports.jpeg" alt="" />
+            </div>
+            <p>
+              All the data is stored in Database, which then can be downloaded
+              as Excel and CSV format for further analysis.
+            </p>
+            <ul class="actions">
+              <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+            </ul>
+          </div>
+        </article>
+        <article>
+          <div class="content">
+            <header>
+              <h3>Notification</h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/notification.jpeg" alt="" />
+            </div>
+            <p>
+              If any sensor value exceeds the thershold value, the user will
+              receive a message and an Email automatically (or) manually.
+            </p>
+            <ul class="actions">
+              <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="two">
+      <div class="inner">
+        <article>
+          <div class="content">
+            <header>
+              <h3> MIT App Inventor </h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/mit.jpg" alt="" />
+            </div>
+            <p>
+              To make it more user friendly and interactive, an Anddoid Application is made using MIT App Inventor where you can access data and location of the device.
+            </p>
+            <ul class="actions">
+              <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+            </ul>
+          </div>
+        </article>
+        <article>
+          <div class="content">
+            <header>
+              <h3> Object Detection </h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/object.jpeg" alt="" />
+            </div>
+            <p>
+              Taking Advantage of the Raspberry Pi Camera, Object Detection is embedded to give the users more interaction and friedly usage of the device.
+            </p>
+            <ul class="actions">
+              <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+            </ul>
+          </div>
+        </article>
+        <article>
+          <div class="content">
+            <header>
+              <h3>Data History</h3>
+            </header>
+            <div class="image fit">
+              <img src="static/image/history.jpeg" alt="" />
+            </div>
+            <p>
+              All the data collected in stored in the database, which is used to visualize sensor values seperatly.
+            </p>
+            <ul class="actions">
+              <!-- <li><a href="#" class="button alt">Learn More</a></li> -->
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="footer">
+      <div class="inner">
+        <header>
+          <h2>Team</h2>
+        </header>
+        <div class="row">
+          <div class="column">
+            <img
+              src="static/image/senthil1.jpeg"
+              width="150"
+              height="220"
+              alt=""
+            />
+            <br />
+            <h5>Senthil Pitchappan V</h5>
+            <p>+919481119745 <br />senthilvalliappan99@gmail.com</p>
+          </div>
+
+          <div class="column">
+            <img
+              src="static/image/senthil.jpeg"
+              width="150"
+              height="220"
+              alt=""
+            />
+            <br />
+            <h5>Shree Harish Rajan A R</h5>
+            <p>+919481119745 <br />senthilvalliappan99@gmail.com</p>
+          </div>
+          <div class="column">
+            <img
+              src="static/image/senthil.jpeg"
+              width="150"
+              height="220"
+              alt=""
+            />
+            <br />
+            <h5>Sherwin Joshva V</h5>
+            <p>+919481119745 <br />senthilvalliappan99@gmail.com</p>
+          </div>
+        </div>
+        <br /><br /><br />
+        <!-- Copyright -->
+        <!-- <div class="footer-copyright text-center py-3">
+          © 2020 Copyright:
+          <a href="https://senthil-v.wixsite.com/portfolio">
+            Senthil Pitchappan V</a
+          >
+        </div> -->
+        <!-- Copyright -->
+      </div>
+    </section>
+
+  </body>
+</html>

@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div class="container">
+    <h2 style="color:white;"> <strong>Emergency Call</strong></h2> <br>
+    <a class="btn btn-info" href="tel:+919481119745">Call</a><br><br><hr>
+    <h2 style="color:white;">Send Email</h2>
+    <a class="btn btn-info" href="{{ url_for('.send_email') }}">Send Email</a>
+    <div><p style="color: green;">{{email_success}} </p></div>
+    <br><br><br>
+
+    <div class="row">
+        <div class="col">
+            <div class="login-light">
+                <form action="/wamsg" method="post">
+                    <h2 style="color:white;">Message</h2>
+                    <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+                    <div class="form-group"><input class="form-control" type="phone" name="wa-phone" placeholder="Phone Number" value="+919481119745" required ></div>
+                    <div class="form-group"><input class="form-control" type="text" name="wa-msg" placeholder="Message" value="Temperature High" required></div>
+                    <div class="form-group"><button class="btn btn-info" type="submit" value>Send Message</button></div>
+                    <div><p style="color: green;">{{wa_error}} </p></div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+
+    <h2 style="color:white;">Upload File</h2>
+    <a class="btn btn-info" href="/upload">Upload</a>
+
+    <br><br><br>
+    <h2 style="color:white;">Download Excel Report</h2>
+    <a class="btn btn-info" href="{{ url_for('.download_report') }}">Generate Excel Report</a>
+    <br><br><br><br>
+    <h2 style="color:white;">Download CSV Report</h2>
+    <a class="btn btn-info" href="{{ url_for('.download_csv') }}">Generate CSV Report</a>
+    <div><p style="color: green;">{{csv_success}} </p></div>
+
+    <br><br><br><br><br><br>
+    <h2 style="color:white;"> <strong>Emergency Contact</strong></h2> <br>
+    <a class="btn btn-info" href="tel:+919481119745">Call</a><br><br>
+    <div style="color:white;">
+        NATIONAL EMERGENCY NUMBER - 112 <br>
+        POLICE - 100 <br>
+        FIRE - 101 <br>
+        AMBULANCE - 102 <br>
+        Disaster Management Services - 108 <br>
+        Women Helpline - 1091 <br>
+        Women Helpline - ( Domestic Abuse ) - 181 <br>
+        Air Ambulance - 9540161344 <br>
+        Aids Helpline - 1097 <br>
+    </div>
+</div>
+<br><br><br><br><br><br>
+
+
+
+
+{% endblock content %}

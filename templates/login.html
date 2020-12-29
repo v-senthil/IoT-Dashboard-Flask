@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>A R M S | Login</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="static/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="shortcut icon" href="static/image/raspi.png" />
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <style>
+    /* Diabel text Selection */
+    div {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10+ and Edge */
+      user-select: none; /* Standard syntax */
+    }
+    </style>
+    <script>
+    // Diabale Right Click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+</head>
+
+<body>
+
+    <div class="login-dark" style="background: #475d62 url(static/image/star-sky.jpg);">
+        <form action="" method="post">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><img style="width:255px;height:205px;" src="static/image/lock.png" alt="Lock"></div>
+            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username" value="Admin" required></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" value="admin" required></div>
+            <div class="form-group"><input class="form-control" type="password" name="api" placeholder="API KEY" required></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" value>Log In</button></div>
+    <!--        </div><a href="#" class="forgot">Forgot your email or password?</a></form>
+    -->
+            <div class="form-group"><p style="color: red;">{{error}} </p></div>
+    </div>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+          var url = 'http://127.0.0.1:5001/GUI-is-still-open';
+          fetch(url, { mode: 'no-cors'});
+          setInterval(function(){ fetch(url, { mode: 'no-cors'});}, 5000)();
+
+        });
+
+      </script>
+
+</body>
+
+</html>

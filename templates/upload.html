@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block content %}
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1 style="color:white;">Upload File</h1>
+      <hr>
+      <form action="/upload-image" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label style="color:white;">Select File</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="image" id="image">
+            <label class="custom-file-label" for="image">Select file...</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-info">Upload</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

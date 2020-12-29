@@ -1,0 +1,288 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <!--        Temperature blue block-->
+            <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="card text-white bg-primary o-hidden h-100">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                            <i class="fa fa-fw fa-thermometer-empty"></i>
+                        </div>
+                        <div class="mr-5">
+                            <span id="message-count" class="sensor1">Sensor: </span>
+                        </div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1" href="/temp_data">
+                        <span class="float-left">View Details</span>
+                        <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+                    </a>
+                </div>
+            </div>
+
+            <!--        Humidity Yellow Block-->
+            <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="card text-white bg-secondary o-hidden h-100">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                            <i class="fa fa-fw fa-tint "></i>
+                        </div>
+                        <div class="mr-5">
+                            <span id="message-count" class="sensor2">Sensor: </span>
+                        </div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1" href="/hum_data">
+                        <span class="float-left">View Details</span>
+                        <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+                    </a>
+                </div>
+            </div>
+
+            <!--        Distance Green Block -->
+            <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="card text-white bg-success o-hidden h-100">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                            <i class="fa fa-fw fa-list-alt"></i>
+                        </div>
+                        <div class="mr-5">
+                            <span id="order-count" class="sensor3">Sensor: </span>
+                        </div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1" href="#">
+                        <span class="float-left">View Details</span>
+                        <span class="float-right">
+                            <i class="fa fa-angle-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!--        Next new data to be added -->
+            <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="card text-white bg-danger o-hidden h-100">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                            <i class="fa fa-fw fa-list-alt"></i>
+                        </div>
+                        <div class="mr-5">
+                            <span id="order-count" class="sensor4">Sensor: </span>
+                        </div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1" href="#">
+                        <span class="float-left">View Details</span>
+                        <span class="float-right">
+                            <i class="fa fa-angle-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body" id="map-container-google-1" class="z-depth-1-half map-container" >
+                <h5 class="card-title">Where is your Device?</h5>
+                <div>
+                    <div id="world_map" style="height:285px;"></div>
+                </div><br>
+                <a href="/track" class="btn btn-info">Go to track</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">What your Device see's?</h5>
+                <iframe
+                        width="900"
+                        height="300"
+                        src=" "
+                        frameborder="0"
+                        allow="accelerometer;
+                        autoplay;
+                        clipboard-write;
+                        encrypted-media;
+                        gyroscope;
+                        picture-in-picture"
+                        allowfullscreen>
+
+                </iframe><br>
+                <a href="/cam" class="btn btn-info">Go to Web Cam</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+
+
+<!-- Temperature Chart area -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-fluid" id="data-temperature">
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<!-- Humidity Chart area -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-fluid" id="data-humidity">
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+        var chartTemperatue;
+        var chartHumidity;
+
+        function requestData()
+        {
+            // Ajax call to get the Data from Flask
+            var requests = $.get('/data');
+
+            var tm = requests.done(function (result)
+            {
+                // Temperature
+                var seriesTemperature = chartTemperatue.series[0],
+                    shiftTemperature = seriesTemperature.data.length > 20;
+
+                // Humidity
+                var seriesHumidity = chartHumidity.series[0],
+                    shiftHumidity = seriesTemperature.data.length > 20;
+
+                // Add the Point
+                // Time Temperature\
+                var data1 = [];
+                data1.push(result[0]);
+                data1.push(result[1]);
+
+
+                // Add the Point
+                // Time Humidity
+                var data2 = [];
+                data2.push(result[0]);
+                data2.push(result[2]);
+
+
+                chartTemperatue.series[0].addPoint(data1, true, shiftTemperature);
+                chartHumidity.series[0].addPoint(data2, true, shiftHumidity);
+                $(".sensor1").text("");
+                $(".sensor1").text("Temperature : " +  Math.round(data1[1]) );
+
+                $(".sensor2").text("");
+                $(".sensor2").text("Humidity : " +  Math.round(data2[1]) );
+
+                // call it again after one second
+                setTimeout(requestData, 2000);
+
+            });
+        }
+
+        $(document).ready(function()
+        {
+            // -------------- Temperature Chart ----------------------------
+            chartTemperatue = new Highcharts.Chart({
+                chart:
+                    {
+                    renderTo: 'data-temperature',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                            }
+                    },
+                title:
+                    {
+                    text: 'Temperature'
+                    },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                        },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                            }
+                         },
+                series: [{
+
+                    lineColor: '#1d82b8',
+                    name: 'Temperature',
+                    data: []
+                }]
+            });
+
+            // -------------- Humidity Chart -----------------
+            chartHumidity = new Highcharts.Chart({
+                chart:
+                    {
+                        renderTo: 'data-humidity',
+                        defaultSeriesType: 'area',
+                        events: {
+                            load: requestData
+                        }
+                    },
+                title:
+                    {
+                        text: 'Humidity'
+                    },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    lineColor: '#ffff4c',
+                    color : '#ffff4c',
+                    name: 'Humidity',
+                    data: []
+                }]
+            });
+
+
+        });
+
+
+</script>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2VudGhpbHYiLCJhIjoiY2tjMnd1Y2o2MXp6NTJxbGppOGo1dmlkNCJ9.h40bt2YHKWtq2lfPD4I9aQ';
+var map = new mapboxgl.Map({
+container: 'world_map',
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [12.550343, 55.665957],
+zoom: 8
+});
+ 
+var marker = new mapboxgl.Marker()
+.setLngLat([12.550343, 55.665957])
+.addTo(map);
+    </script>
+{% endblock content %}

@@ -1,0 +1,178 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>A R M S</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/addtohomescreen.css') }}">
+    <script src="{{ url_for('static', filename='js/addtohomescreen.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/raspi.png') }}"/>
+    <style>
+        #map-canvas{
+    width:1855px;
+    height:810px;
+    }
+    /* Hide Scroll Bar*/
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    /* Diabel text Selection */
+    div {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10+ and Edge */
+      user-select: none; /* Standard syntax */
+    }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script>
+    setTimeout(() => {
+        window.location.reload(true);
+    },2000);
+    </script>
+    <script>
+    // Diabale Right Click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="{{ url_for('.home') }}">A R M S </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="{{ url_for('.home') }}">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="All Data">
+                <a class="nav-link" href="{{ url_for('.alldata') }}">
+                    <i class="fa fa-fw fa-database "></i>
+                    <span class="nav-link-text">All Data</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Track Car">
+                <a class="nav-link" href="{{ url_for('.track') }}">
+                    <i class="fa fa-fw fa-location-arrow "></i>
+                    <span class="nav-link-text">Track</span>
+                </a>
+            </li>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Webcam">
+                <a class="nav-link" href="/cam">
+                    <i class="fa fa-fw fa-video-camera"></i>
+                    <span class="nav-link-text">Web cam</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Report">
+                <a class="nav-link" href="{{ url_for('.report') }}">
+                    <i class="fa fa-fw fa-exclamation-triangle"></i>
+                    <span class="nav-link-text">Report</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Remote">
+                <a class="nav-link" href="/remote">
+                    <i class="fa fa-fw fa-universal-access "></i>
+                    <span class="nav-link-text">Remote Access</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Google Sheet">
+                <a class="nav-link" href="/gsheet">
+                    <i class="fa fa-fw fa-google "></i>
+                    <span class="nav-link-text">Google Sheet</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Custom">
+                <a class="nav-link" href="/custom">
+                    <i class="fa fa-fw fa-plus-square"></i>
+                    <span class="nav-link-text">Custom</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0">
+        <a class="btn btn-info" href="/">Logout</a>
+    </form>
+</nav>
+<br><br><br><br>
+<div class="container mb-3 mt-3">
+    <table class="table table-stripped table-bordered lastdatavalue" style="width: 100%" id="lastdatavalue">
+        <thead>
+        <tr>
+            <h2 colspan="1">Last Sensor Value</h2>
+        </tr>
+        <tr>
+            <th>Time Stamp</th>
+            <th>Temperature</th>
+            <th>Humidity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{rows[0][0]}}</td>
+            <td>{{rows[0][1]}}</td>
+            <td>{{rows[0][2]}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br><br>
+
+<div class="container mb-3 mt-3" >
+    <table class="table table-stripped table-bordered mydatatable" style="width: 100%" id="mydatatable">
+        <tr>
+            <h2 colspan="1">All Sensor Value</h2>
+        </tr>
+        <tr>
+            <th>Time Stamp</th>
+            <th>Temperature</th>
+            <th>Humidity</th>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+
+    $('.lastdatavalue').DataTable({
+        searching: false,
+        ordering: false,
+        paging: false,
+        createdRow: function(row,data,index){
+            if(data[1].replace(/[\$,]/g, '')*1 > 30 ){
+                $('td',row).eq(1).addClass('text-danger');
+            }
+            else if(data[2].replace(/[\$,]/g, '')*1 > 30){
+                $('td',row).eq(2).addClass('text-danger');
+            }
+            else{
+                $('td',row).addClass('text-success');
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

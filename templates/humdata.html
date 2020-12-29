@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Humidity Data</title>
+  <meta name="description" content="Temp conditions - RPi">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/addtohomescreen.css') }}">
+  <script src="{{ url_for('static', filename='js/addtohomescreen.js') }}"></script>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='image/raspi.png') }}"/>
+  <style>
+  /* Hide Scroll Bar*/
+  ::-webkit-scrollbar {
+      display: none;
+  }
+  /* Diabel text Selection */
+  div {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ and Edge */
+    user-select: none; /* Standard syntax */
+  </style>
+  <script>
+  setTimeout(() => {
+      window.location.reload(true);
+  },2000);
+  </script>
+  <script>
+  // Diabale Right Click
+      document.addEventListener('contextmenu', event => event.preventDefault());
+
+  </script>
+
+</head>
+<body><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="one-third column" style="margin-top:5%">
+        <strong>Showing all records</strong>
+        <h2>Humidity</h2>
+        <table class="u-full-width">
+          <thead style="display:block;">
+            <tr>
+              <th>Date</th>
+              <th> &deg;F</th>
+            </tr>
+          </thead>
+          <tbody style="height:450px; overflow:scroll; display:block;">
+            {% for row in humdata %}
+            <tr>
+              <td>{{row[0]}}</td>
+              <td>{{'%0.2f'|format(row[1])}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  </html>
